@@ -13,7 +13,7 @@ import (
 	"net/http"
 	"strings"
 	"time"
-)
+	)
 
 var logger = hclog.NewNullLogger()
 func SetLogger(theLogger hclog.Logger) {
@@ -37,7 +37,7 @@ func UpdupJob(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		if err := decodeBody(r, &oldJob); err != nil {
 			return errors.Wrap(err, "decodeBody")
 		}
-
+		oldJob.Canonicalize()
 		var nomadJobreq NomadJobRegisterRequest
 		nomadJobreq.Job, err = convertJob(&oldJob)
 		if err != nil {
