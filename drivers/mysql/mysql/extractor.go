@@ -412,6 +412,7 @@ func (e *Extractor) inspectTables() (err error) {
 						if err != nil {
 							return err
 						}
+						doTb.TableRename = strings.Replace(doTb.TableRename, "($)", "$", 1)
 						/*	var tableRenameRegex string
 							if doTb.TableRenameRegex == "" {*/
 						tableRenameRegex := doTb.TableRename
